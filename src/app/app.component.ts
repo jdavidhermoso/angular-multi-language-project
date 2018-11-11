@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {LanguageManagerService} from './services/language-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,13 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'multi-language-project';
+  constructor(private translate: TranslateService,
+              private languageManagerService: LanguageManagerService) {
+    const savedLanguage = this.languageManagerService.getSavedLanguage();
+    this.translate.setDefaultLang('en');
 
-  constructor(translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+    if (savedLanguage) {
+      this.translate.use(savedLanguage);
+    }
   }
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {LanguageManagerService} from './services/language-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'multi-language-project';
+  constructor(private translate: TranslateService,
+              private languageManagerService: LanguageManagerService) {
+    const savedLanguage = this.languageManagerService.getSavedLanguage();
+    this.translate.setDefaultLang('en');
+
+    if (savedLanguage) {
+      this.translate.use(savedLanguage);
+    }
+  }
 }

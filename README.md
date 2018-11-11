@@ -1,5 +1,9 @@
 # MultiLanguageProject
 
+This is an example project for learning how to build a multilingual app with Angular.
+
+I use the [NGX-Translate](https://github.com/ngx-translate/core) library and the [TranslateHttpLoader](https://github.com/ngx-translate/http-loader) module to have AOT support.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
